@@ -5,7 +5,7 @@ import numpy as np
 
 import matplotlib.pyplot as plt
 import seaborn as sns
-import folium
+import plotly.express as px
 
 import datetime
 
@@ -44,8 +44,8 @@ def load_data():
 
     df['Start Date'] = df.apply(lambda x: time_parser(x['Start Year'],x['Start Month'],x['Start Day']) , axis = 1)
     df['End Date'] = df.apply(lambda x: time_parser(x['End Year'],x['End Month'],x['End Day']) , axis = 1)
-    df['lat']=df['Latitude']
-    df['lon']=df['Longitude']
+    df['lat']=df['Latitude'].apply(lambda x: np.round(x,3))
+    df['lon']=df['Longitude'].apply(lambda x: np.round(x,3))
     #df['Eruption Duration'] =  df.apply(lambda x:eruption_duration(x['Start Date'],x['End Date']), axis = 1)
 
 
@@ -58,8 +58,6 @@ def load_data():
               'End Date',
              # 'Eruption Duration',
               'Evidence Method (dating)',
-              'Latitude',
-              'Longitude',
               'lat',
               'lon']]
 
@@ -79,20 +77,23 @@ def main():
                                                                   'End Date',
                                                                   #'Eruption Duration',
                                                                   'Evidence Method (dating)',
-                                                                  'Latitude',
-                                                                  'Longitude'])
-    ms_pais= st.sidebar.multiselect("Filtrar por", ['País', 'Siglo', 'Tipo de volcán'])
+                                                                  'lat',
+                                                                  'lon'])
+    ms_pais= st.sidebar.multiselect("Filtrar por", ['País', 'Siglo', 'Tipo de volcán','Nombre'])
     paises = st.sidebar.multiselect("Elije un volcán:", df['Volcano Name'].unique())
     filtered_df = df[ms].loc[df['Volcano Name'].isin(paises)]
 
     if page == 'Data':
-
+        mapcheck= st.button("Visualizar en mapa")
         st.table(filtered_df)
-        filtered_df['Latitude'][12]
+        if mapcheck == True:
+            px.set_mapbox_access_token('pk.eyJ1Ijoicml0bWFuZG90cHkiLCJhIjoiY2s3ZHJidGt0MDFjNzNmbGh5aDh4dTZ0OSJ9.-SROtN91ZvqtFpO1nGPFeg')
+            px.scatter_mapbox(filtered_df, lat="lat", lon="lon", text= 'Volcano Name').show()
+
 
     if page == 'Mapa':
 
-        st.map(filtered_df)
+        st.map(filtered_df, zoom=11)
 
 
 

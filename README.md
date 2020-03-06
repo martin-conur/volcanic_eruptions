@@ -9,26 +9,47 @@ This dataset represent the work of more than 7.000 papers and hundreds of years 
 
 **Eruption list contains:**
 &gt;Volcano Number = id of the volcano
+
 &gt;Volcano Name 
+
 &gt;Eruption Number = eruption id
+
 &gt;Eruption Category = Confirmed  Eruption or Uncertain Eruption
+
 &gt;Area of Activity = where in the volcano, the eruption occurs (crater,  side walls, a certain area)
+
 &gt;VEI = [volcanic eruption index](https://en.wikipedia.org/wiki/Volcanic_Explosivity_Index), is a logaritmic scale of the eruptions magnitud (from 0 to 8)
+
 &gt;VEI Modifier = I supose it is a post modification to the VEI, but is almost full of nan values
+
 &gt;Start Year Modifier = same that above
+
 &gt;Start Year = Beginning of the eruption
+
 &gt;Start Year Uncertainty = the uncertainty related to the age datation
+
 &gt;Start Month = the month of the eruption
+
 &gt;Start Day Modifier = same as all modifiers
+
 &gt;Start Day = the day of the month were the eruption start
+
 &gt;Start Day Uncertainty = confidence intervals related to the datation method
+
 &gt;Evidence Methon (dating) = The method used to define the date of the eruption
+
 &gt;End Year Modifier = 
+
 &gt;End Year = when the eruption finished
+
 &gt;End Day Modifier = 
+
 &gt;End Day = the day that ends
+
 &gt;End Day Uncertainty = related to the datation method
+
 &gt;Latitude = coordinates y axes
+
 &gt;Longitude = coordinates x axes
 
 

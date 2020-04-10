@@ -6,7 +6,7 @@ Volcanic eruptions are an exceptional phenomena, one of the few (if not the only
 This dataset represent the work of more than 7.000 papers and hundreds of years of research. It summarize the volcanic eruption magnitud (~VEI), date, location and in some cases the volcanic processes related to it.
 
 ### Content
-
+ 
 **Eruption list contains:**
 &gt;Volcano Number = id of the volcano
 
